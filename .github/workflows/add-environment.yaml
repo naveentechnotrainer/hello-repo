@@ -1,0 +1,18 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Frist-CI-Pipeline
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  update-env:
+    steps:
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
