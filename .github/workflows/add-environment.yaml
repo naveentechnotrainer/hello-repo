@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Frist-CI-Pipeline
+name: Demo-add-variable
 on:
   push:
     branches: [ "main" ]
@@ -9,6 +9,10 @@ jobs:
   update-env:
     runs-on: ubuntu-latest
     steps:
+      - name: Print variable
+        id: step_zero
+        run: |
+          cat  $GITHUB_ENV
       - name: Set the value
         id: step_one
         run: |
@@ -17,3 +21,7 @@ jobs:
         id: step_two
         run: |
           echo "${{ env.action_state }}" # This will output 'yellow'
+      - name: Print variable after update
+        id: step_three
+        run: |
+          cat  $GITHUB_ENV
